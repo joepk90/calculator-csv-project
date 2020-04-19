@@ -31,7 +31,7 @@ const Calculator = class {
 
     getCalculations() {
 
-        const calculationElement = this.getCalculatorElement('.js-calc-calculationElement');
+        const calculationElement = this.getCalculatorElement('.js-calc-calculations');
 
         if (calculationElement === null) return null;
 
@@ -44,6 +44,7 @@ const Calculator = class {
 
         return {
             firstValue: this.resultElement[0].value,
+            operator: null,
             secondValue: null,
         };
 
@@ -72,12 +73,16 @@ const Calculator = class {
 
     updateCalculationElement() {
 
+        console.log(this.calculationElement);
         if (this.calculationElement === null) return;
 
-        let html = this.resultValues
 
-        this.calculationElement.innerHTML()
+        let html = '';
+        html += this.resultValues.firstValue !== null ? this.resultValues.firstValue : '';
+        html += this.resultValues.operator !== null ? this.resultValues.operator : '';
+        html += this.resultValues.secondValue !== null ? this.resultValues.secondValue : '';
 
+        this.calculationElement[0].innerHTML = parseInt(html);
 
     }
 
