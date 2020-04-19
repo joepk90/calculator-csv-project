@@ -131,13 +131,25 @@ const Calculator = class {
 
     }
 
+    getUrl() {
+
+        const developmentUrl = process.env.CALCULATOR_URL
+
+        if (developmentUrl !== undefined) return developmentUrl;
+
+        return '/calculator/';
+
+    }
+
     async saveData() {
 
         let calculatorData = new FormData();
 
         calculatorData.append("result", JSON.stringify(this.result));
 
-        const result = await this.http.post(process.env.CALCULATOR_URL, calculatorData);
+        const url = this.getUrl();
+
+        const result = await this.http.post(url, calculatorData);
 
         console.log(result);
 
