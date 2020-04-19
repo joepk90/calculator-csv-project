@@ -5,6 +5,7 @@ const Calculator = class {
         this.buttons = this.getButtons();
         this.result = this.getResult();
         this.calculations = this.getCalculations();
+        this.resultValue = this.getResultValue();
     }
 
     getCalculator() {
@@ -36,6 +37,14 @@ const Calculator = class {
         return calculations;
     }
 
+    getResultValue() {
+
+        if (this.result === null) return;
+
+        return this.result[0].value;
+
+    }
+
     getResult() {
 
         const results = this.getCalculatorElement('.js-calc-results');
@@ -57,10 +66,46 @@ const Calculator = class {
 
     }
 
-    setupEvents() {
+    updateResult(value) {
 
-        if (this.buttons.length === 0) return;
-        console.log(this.buttons);
+
+        console.log(value);
+
+
+    }
+
+    setupButtonEvents() {
+
+        if (this.buttons === null) return;
+
+        const buttons = Array.from(this.buttons);
+
+        buttons.forEach((button) => {
+
+            button.addEventListener('click', (e) => {
+
+                e.preventDefault();
+
+                if (e.target.dataset.type === undefined) return;
+                if (e.target.value === undefined) return;
+
+                let buttonType = e.target.dataset.type;
+                let buttonValue = e.target.value;
+
+                if (buttonType === 'number') {
+
+                    this.updateResult(buttonValue);
+
+                } else if (buttonType === 'operator') {
+
+                } else if (buttonType === 'save') {
+
+                } else if (buttonType === 'reset') {
+
+                }
+
+            })
+        });
 
 
     }
@@ -70,7 +115,7 @@ const Calculator = class {
         // check caclutor element before running any other logic
         if (this.calculator === null) return;
 
-        this.setupEvents();
+        this.setupButtonEvents();
 
 
     }

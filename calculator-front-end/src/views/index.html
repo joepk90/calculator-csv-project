@@ -17,7 +17,7 @@
 
             <div class="calculator__results">
 
-                <span class="calculator__calculations js-calculations">10 X 10 =</span>
+                <span class="calculator__calculations js-calc-calculations">10 X 10 =</span>
                 <input class="calculator__result js-calc-results" value="0"></input>
 
             </div>
@@ -25,33 +25,50 @@
 
                 <div class="calculator__inputs">
                     <div class="calculator__functions">
-                        <button class="calculator__input calculator__input--ac button js-calc-button">AC</button>
-                        <button class="calculator__input calculator__input--save button js-calc-button">Save</button>
+                        <button class="calculator__input calculator__input--ac button js-calc-button"
+                            data-type="reset">AC</button>
+                        <button class="calculator__input calculator__input--save button js-calc-button"
+                            data-type="save">Save</button>
                     </div>
 
                     <div class="calculator__numbers">
-                        <button class="calculator__input calculator__input--number button js-calc-button">.</button>
-                        <button class="calculator__input calculator__input--number button">0</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="decimal" value=".">.</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="0">0</button>
                         <button class="calculator__input calculator__input--number button button--disabled"></button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">1</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">2</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">3</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">4</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">5</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">6</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">7</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">8</button>
-                        <button class="calculator__input calculator__input--number button js-calc-button">9</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="1">1</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="2">2</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="3">3</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="4">4</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="5">5</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="6">6</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="7">7</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="8">8</button>
+                        <button class="calculator__input calculator__input--number button js-calc-button"
+                            data-type="number" value="9">9</button>
                     </div>
                 </div>
 
                 <div class="calculator__operators">
-                    <button
-                        class="calculator__input calculator__input--operator button js-calc-button">&divide;</button>
-                    <button class="calculator__input calculator__input--operator button js-calc-button">&times;</button>
-                    <button class="calculator__input calculator__input--operator button js-calc-button">-</button>
-                    <button class="calculator__input calculator__input--operator button js-calc-button">+</button>
-                    <button class="calculator__input calculator__input--operator button js-calc-button">=</button>
+                    <button class="calculator__input calculator__input--operator button js-calc-button"
+                        data-type="operator" value="/">&divide;</button>
+                    <button class="calculator__input calculator__input--operator button js-calc-button"
+                        data-type="operator" value="*">&times;</button>
+                    <button class="calculator__input calculator__input--operator button js-calc-button"
+                        data-type="operator" value="-">-</button>
+                    <button class="calculator__input calculator__input--operator button js-calc-button"
+                        data-type="operator" value="+">+</button>
+                    <button class="calculator__input calculator__input--operator button js-calc-button"
+                        data-type="operator" value="=">=</button>
                 </div>
 
             </div>
