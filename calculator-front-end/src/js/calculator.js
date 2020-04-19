@@ -131,6 +131,18 @@ const Calculator = class {
 
     }
 
+    async saveData() {
+
+        let calculatorData = new FormData();
+
+        calculatorData.append("result", JSON.stringify(this.result));
+
+        const result = await this.http.post(process.env.CALCULATOR_URL, calculatorData);
+
+        console.log(result);
+
+    }
+
     setupButtonEvents() {
 
         if (this.buttons === null) return;
@@ -162,6 +174,8 @@ const Calculator = class {
                     this.calculateValues();
 
                 } else if (buttonType === 'save') {
+
+                    this.saveData();
 
                 } else if (buttonType === 'reset') {
 
