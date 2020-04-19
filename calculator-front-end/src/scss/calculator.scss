@@ -1,15 +1,35 @@
 .calculator {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 50px auto;
     max-width: 200px;
+    background-color: $charcoal-grey;
+    font-family: $font-family;
+    font-weight: 300;
 
 
     &__results {
+        width: 90%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 100px;
+        padding: 25px 0
+    }
+
+    &__calculations {
+        color: $light-grey;
+        text-align: right;
+        font-size: $h2-font-size;
+    }
+
+    &__result {
+        appearance: none;
+        font-size: $h1-font-size;
+        text-align: right;
+        color: $white;
+        background-color: $charcoal-grey;
+        border: none;
+        pointer-events: none;
     }
 
     &__controls {
@@ -41,16 +61,31 @@
     }
 
     &__input {
-
         text-transform: uppercase;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 0.25px solid rgba($charcoal-grey, 0.9);
+        cursor: pointer;
+        color: $white;
+        font-size: $p-font-size;
+        font-weight: 300;
 
         &--ac {
-            
+            background-color: $luminous-pink;
         }
 
         &--save {
             width: 100px;
+            background-color: $luminous-pink;
+        }
 
+        &--operator {
+            background-color: $light-orange;
+        }
+
+        &--number {
+            background-color: $light-pink;
         }
 
     }
