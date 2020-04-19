@@ -1,0 +1,7 @@
+{
+    "name": "root/calculator",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^4.1"
+    }
+}
