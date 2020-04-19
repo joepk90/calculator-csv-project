@@ -5,7 +5,7 @@ const Calculator = class {
         this.buttons = this.getButtons();
         this.resultElement = this.getResult();
         this.calculationElement = this.getCalculations();
-        this.resultValues = this.getResultValues();
+        this.resultValues = this.getInitialResultValues();
         this.resultOperator = null;
     }
 
@@ -38,14 +38,14 @@ const Calculator = class {
         return calculationElement;
     }
 
-    getResultValues() {
+    getInitialResultValues() {
 
         if (this.resultElement === null) return;
 
         return {
-            firstValue: this.resultElement[0].value,
+            firstValue: 0,
             operator: null,
-            secondValue: null,
+            secondValue: 0,
         };
 
     }
@@ -73,16 +73,28 @@ const Calculator = class {
 
     updateCalculationElement() {
 
-        console.log(this.calculationElement);
         if (this.calculationElement === null) return;
 
-
         let html = '';
-        html += this.resultValues.firstValue !== null ? this.resultValues.firstValue : '';
+        html += this.resultValues.firstValue !== null ? parseInt(this.resultValues.firstValue) : '';
         html += this.resultValues.operator !== null ? this.resultValues.operator : '';
-        html += this.resultValues.secondValue !== null ? this.resultValues.secondValue : '';
+        html += this.resultValues.secondValue !== null ? parseInt(this.resultValues.secondValue) : '';
 
-        this.calculationElement[0].innerHTML = parseInt(html);
+        this.calculationElement[0].innerHTML = html;
+
+    }
+
+    updateResetValue() {
+
+        this.resultValues = this.getInitialResultValues();
+        this.updateCalculationElement();
+
+    }
+
+    updateOperatorValue(value) {
+
+        this.resultValues.operator = value
+        this.updateCalculationElement();
 
     }
 
@@ -90,7 +102,7 @@ const Calculator = class {
 
         if (Number.isInteger(parseInt(value)) === false) return;
 
-        if (this.resultOperator == null) {
+        if (this.resultValues.operator === null) {
 
             this.resultValues.firstValue += value;
 
@@ -100,16 +112,7 @@ const Calculator = class {
 
         }
 
-
         this.updateCalculationElement();
-
-        console.log(this.resultValues);
-
-
-        this.resultElement
-        // TODO update input value 
-        // this.sresultValues = value
-
 
     }
 
@@ -137,12 +140,15 @@ const Calculator = class {
 
                 } else if (buttonType === 'operator') {
 
+                    this.updateOperatorValue(buttonValue);
+
                 } else if (buttonType === 'save') {
 
                 } else if (buttonType === 'reset') {
 
-                }
+                    this.updateResetValue();
 
+                }
             })
         });
 
