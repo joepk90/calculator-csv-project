@@ -1,6 +1,9 @@
+import HTTP from './HTTPClient';
+
 const Calculator = class {
 
     constructor() {
+        this.http = new HTTP();
         this.calculator = this.getCalculator();
         this.buttons = this.getButtons();
         this.resultElement = this.getResult();
