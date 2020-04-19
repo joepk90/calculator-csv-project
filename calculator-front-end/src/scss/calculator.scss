@@ -1,0 +1,19 @@
+.calculator {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 200px;
+
+
+    &__results {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+    }
+
+    &__inputs {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
