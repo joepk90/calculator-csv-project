@@ -7,6 +7,7 @@ const Calculator = class {
         this.calculationElement = this.getCalculations();
         this.resultValues = this.getInitialResultValues();
         this.resultOperator = null;
+        this.result = 0;
     }
 
     getCalculator() {
@@ -75,10 +76,10 @@ const Calculator = class {
 
         if (this.calculationElement === null) return;
 
-        let html = '';
-        html += this.resultValues.firstValue !== null ? parseInt(this.resultValues.firstValue) : '';
+        let html = 0;
+        html += this.resultValues.firstValue !== 0 ? parseInt(this.resultValues.firstValue) : '';
         html += this.resultValues.operator !== null ? this.resultValues.operator : '';
-        html += this.resultValues.secondValue !== null ? parseInt(this.resultValues.secondValue) : '';
+        html += this.resultValues.secondValue !== 0 ? parseInt(this.resultValues.secondValue) : '';
 
         this.calculationElement[0].innerHTML = html;
 
@@ -116,6 +117,18 @@ const Calculator = class {
 
     }
 
+    calculateValues() {
+
+        if (this.resultValues.firstValue === null) return;
+        if (this.resultValues.operator === null) return;
+        if (this.resultValues.secondValue === null) return;
+
+        this.result = eval(parseInt(this.resultValues.firstValue) + this.resultValues.operator + parseInt(this.resultValues.secondValue))
+
+        this.resultElement[0].value = this.result;
+
+    }
+
     setupButtonEvents() {
 
         if (this.buttons === null) return;
@@ -141,6 +154,10 @@ const Calculator = class {
                 } else if (buttonType === 'operator') {
 
                     this.updateOperatorValue(buttonValue);
+
+                } else if (buttonType === 'equal') {
+
+                    this.calculateValues();
 
                 } else if (buttonType === 'save') {
 
