@@ -6,4 +6,6 @@ require_once __DIR__ . '/utilities.php';
 
 require_once __DIR__ . '/csv.php';
 
+require_once __DIR__ . '/table.php';
+
 
