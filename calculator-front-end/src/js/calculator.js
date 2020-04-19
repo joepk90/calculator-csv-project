@@ -3,9 +3,10 @@ const Calculator = class {
     constructor() {
         this.calculator = this.getCalculator();
         this.buttons = this.getButtons();
-        this.result = this.getResult();
-        this.calculations = this.getCalculations();
-        this.resultValue = this.getResultValue();
+        this.resultElement = this.getResult();
+        this.calculationElement = this.getCalculations();
+        this.resultValues = this.getResultValues();
+        this.resultOperator = null;
     }
 
     getCalculator() {
@@ -30,18 +31,21 @@ const Calculator = class {
 
     getCalculations() {
 
-        const calculations = this.getCalculatorElement('.js-calc-calculations');
+        const calculationElement = this.getCalculatorElement('.js-calc-calculationElement');
 
-        if (calculations === null) return null;
+        if (calculationElement === null) return null;
 
-        return calculations;
+        return calculationElement;
     }
 
-    getResultValue() {
+    getResultValues() {
 
-        if (this.result === null) return;
+        if (this.resultElement === null) return;
 
-        return this.result[0].value;
+        return {
+            firstValue: this.resultElement[0].value,
+            secondValue: null,
+        };
 
     }
 
