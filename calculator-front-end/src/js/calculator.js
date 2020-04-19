@@ -70,10 +70,40 @@ const Calculator = class {
 
     }
 
-    updateResult(value) {
+    updateCalculationElement() {
+
+        if (this.calculationElement === null) return;
+
+        let html = this.resultValues
+
+        this.calculationElement.innerHTML()
 
 
-        console.log(value);
+    }
+
+    updateResultValues(value) {
+
+        if (Number.isInteger(parseInt(value)) === false) return;
+
+        if (this.resultOperator == null) {
+
+            this.resultValues.firstValue += value;
+
+        } else {
+
+            this.resultValues.secondValue += value;
+
+        }
+
+
+        this.updateCalculationElement();
+
+        console.log(this.resultValues);
+
+
+        this.resultElement
+        // TODO update input value 
+        // this.sresultValues = value
 
 
     }
@@ -98,7 +128,7 @@ const Calculator = class {
 
                 if (buttonType === 'number') {
 
-                    this.updateResult(buttonValue);
+                    this.updateResultValues(buttonValue);
 
                 } else if (buttonType === 'operator') {
 
