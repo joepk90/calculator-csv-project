@@ -32,7 +32,15 @@ class CSV {
 
     public function get_data() {
 
-        $data = fopen($this->file_name . ".csv","r");
+        $file = fopen($this->file_name . '.csv', 'r');
+
+        $data = array();
+
+        while (($line = fgetcsv($file)) !== FALSE) {
+            $data[] = $line;
+        }
+
+        fclose($file);
 
         if (empty($data)) return null;
 
