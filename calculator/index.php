@@ -8,16 +8,27 @@ $dotenv->load();
 
 require_once __DIR__ . '/components/components.php';
 
-set_headers();
+$csv = new CSV('calculations');
+$utilites = new Utilities();
 
-new CSV('calculations');
+set_headers();
 
 if (empty($_POST) === false) :
 
-    echo json_encode($_POST);
+    $result = $utilites->get_array_element('result', $_POST);
+
+    $response = $csv->save_data($result);
+
+    $message = ($response === true) ? 'success: calculation has been saved' : 'failed: calculation could not be saved';
+
+    echo json_encode($message);
 
 
 else:
+
+    $records = $csv->get_data();
+
+    var_dump($records);
 
     echo 'hello world';
 
