@@ -85,10 +85,13 @@ const Calculator = class {
 
     }
 
-    updateResetValue() {
+    resetValues() {
 
         this.resultValues = this.getInitialResultValues();
         this.updateCalculationElement();
+
+        // reset main value to 0
+        this.calculateValues();
 
     }
 
@@ -118,10 +121,6 @@ const Calculator = class {
     }
 
     calculateValues() {
-
-        if (this.resultValues.firstValue === null) return;
-        if (this.resultValues.operator === null) return;
-        if (this.resultValues.secondValue === null) return;
 
         this.result = eval(parseInt(this.resultValues.firstValue) + this.resultValues.operator + parseInt(this.resultValues.secondValue))
 
@@ -163,7 +162,7 @@ const Calculator = class {
 
                 } else if (buttonType === 'reset') {
 
-                    this.updateResetValue();
+                    this.resetValues();
 
                 }
             })
