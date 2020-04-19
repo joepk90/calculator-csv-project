@@ -13,6 +13,7 @@
  1. Clone the repository to your server/PHP environment.
  2. Navigate to the *calculator* directory
  3. Add an _.env_ file with the following variable declared: *ENV="develop"*
+ 4. Install Composer dependancies - run: *composer update*
  4. Navigate to the *calculator-front-end* directory
  5. Add an _.env_ file with the following variable declared: *CALCULATOR_URL=http://www.your-domain.com/calculator/index.php*
  6. Install node_modules: *npm install*
